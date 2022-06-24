@@ -1,5 +1,9 @@
-import logo from './logo.svg';
+import logo from './checklist.png';
 import './App.css';
+import 'antd/dist/antd.css';
+import { DatePicker } from 'antd';
+import MyButton from './Components/MyButton';
+import { PlusCircleOutlined, MinusCircleOutlined } from '@ant-design/icons';
 
 function App() {
   return (
@@ -7,17 +11,24 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Bienvenue sur ma todo list
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <MyButton 
+          tooltip="Cliquer pour ajouter une liste"
+          onClick={() => console.log("liste ajoutée")}
+          icon={<PlusCircleOutlined />}
+          type = 'primary'>
+            Nouvelle liste
+          </MyButton>
+          <MyButton 
+          tooltip="Cliquer pour supprimer une liste"
+          onClick={() => console.log("liste supprimée")}
+          icon={<MinusCircleOutlined />}
+          type='danger'>
+            Supprimer liste
+          </MyButton>
       </header>
+      <img src="" alt="" />
     </div>
   );
 }
