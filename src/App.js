@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import logo from './checklist.png';
 import './App.css';
 import 'antd/dist/antd.css';
-import { DatePicker } from 'antd';
 import MyButton from './Components/MyButton';
-import { PlusCircleOutlined, MinusCircleOutlined } from '@ant-design/icons';
+import { PlusCircleOutlined } from '@ant-design/icons';
+import ListModal from './Components/ListModal';
 
 function App() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <div className="App">
       <header className="App-header">
@@ -15,18 +17,23 @@ function App() {
         </p>
         <MyButton 
           tooltip="Cliquer pour ajouter une liste"
-          onClick={() => console.log("liste ajoutée")}
+          onClick={() => setIsModalVisible(true)}
           icon={<PlusCircleOutlined />}
           type = 'primary'>
             Nouvelle liste
           </MyButton>
-          <MyButton 
-          tooltip="Cliquer pour supprimer une liste"
-          onClick={() => console.log("liste supprimée")}
-          icon={<MinusCircleOutlined />}
-          type='danger'>
-            Supprimer liste
-          </MyButton>
+          {/*<MyButton 
+            tooltip="Cliquer pour supprimer une liste"
+            onClick={() => console.log("liste supprimée")}
+            icon={<MinusCircleOutlined />}
+            type='danger'>
+              Supprimer liste
+          </MyButton>*/}
+          <ListModal 
+            title="nouvelle liste" 
+            isVisible={isModalVisible} 
+            handleCancel={()=>setIsModalVisible(false)} 
+          />
       </header>
       <img src="" alt="" />
     </div>
